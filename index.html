@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LBS Skill Centre Kazhakoottam | Computer Courses, Diploma & Professional Programs</title>
+    <meta name="description" content="Explore certificate courses, diploma programs, and professional training programs in Python, Web Designing, Artificial Intelligence, Machine Learning, Data Analytics, and Full Stack Development at LBS Skill Centre, Kazhakoottam.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#182B70',
+                        'navy-dark': '#101B46',
+                        red: '#E53935',
+                        teal: '#00A6A6',
+                        gray: { 50: '#F5F7FA', 800: '#202634', 500: '#64748B' }
+                    },
+                    fontFamily: {
+                        heading: ['Poppins', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, rgba(24,43,112,0.95) 0%, rgba(16,27,70,0.9) 50%, rgba(0,166,166,0.2) 100%), url('https://images.unsplash.com/photo-1517243139-7e66b7217199?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px rgba(24,43,112,0.2); }
+        .pro-card { background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%); border: 2px solid #182B70; }
+        .modal-overlay { opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #182B70; border-radius: 4px; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-content.open { max-height: 500px; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex-shrink-0">
+                    <img src="https://z-cdn-media.chatglm.cn/files/c27baa9e-80dd-42b3-bda3-741ec33b0d53.png?auth_key=1883484916-1b413faf049443bebd5f10827d1845f4-0-e7bf9a8784e9fa70d7fa62b5185a0ea4" alt="LBS Skill Centre" class="h-14 w-auto">
+                </a>
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#home" class="text-sm font-medium text-gray-800 hover:text-navy">Home</a>
+                    <a href="#about" class="text-sm font-medium text-gray-800 hover:text-navy">About Us</a>
+                    <div class="relative group">
+                        <button class="text-sm font-medium text-gray-800 hover:text-navy flex items-center gap-1">Courses <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                            <a href="#courses" class="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-800">All Courses</a>
+                            <a href="#courses" onclick="setTimeout(()=>filterCategory('Certificate'),100)" class="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-800">Certificate Courses</a>
+                            <a href="#courses" onclick="setTimeout(()=>filterCategory('Diploma'),100)" class="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-800">Diploma Courses</a>
+                            <a href="#professional" class="block px-4 py-2 text-sm hover:bg-gray-50 text-gray-800">Professional Programs</a>
+                        </div>
+                    </div>
+                    <a href="#professional" class="text-sm font-medium text-gray-800 hover:text-navy">Professional Programs</a>
+                    <a href="#admissions" class="text-sm font-medium text-gray-800 hover:text-navy">Admissions</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-800 hover:text-navy">Contact Us</a>
+                </div>
+                <div class="hidden lg:block">
+                    <a href="#admissions" class="bg-red hover:bg-red-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Enquire Now</a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden p-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-y-0 right-0 w-80 max-w-full bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="https://z-cdn-media.chatglm.cn/files/c27baa9e-80dd-42b3-bda3-741ec33b0d53.png?auth_key=1883484916-1b413faf049443bebd5f10827d1845f4-0-e7bf9a8784e9fa70d7fa62b5185a0ea4" alt="LBS" class="h-10">
+                <button id="mobileMenuClose" class="p-2"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="flex flex-col gap-4">
+                <a href="#home" class="text-lg font-medium hover:text-navy">Home</a>
+                <a href="#about" class="text-lg font-medium hover:text-navy">About Us</a>
+                <a href="#courses" class="text-lg font-medium hover:text-navy">All Courses</a>
+                <a href="#professional" class="text-lg font-medium hover:text-navy">Professional Programs</a>
+                <a href="#admissions" class="text-lg font-medium hover:text-navy">Admissions</a>
+                <a href="#contact" class="text-lg font-medium hover:text-navy">Contact Us</a>
+                <a href="#admissions" class="mt-4 bg-red text-white px-6 py-3 rounded-full text-center font-semibold">Enquire Now</a>
+            </div>
+        </div>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg relative min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">Build Your Future with <span class="text-teal">LBS Skill Centre</span></h1>
+                    <p class="text-xl font-semibold text-white/90 mb-4">Professional Computer Courses. Practical Skills. Career-Focused Learning.</p>
+                    <p class="text-white/80 mb-8 leading-relaxed">Explore certificate courses, diploma programs, and professional training programs in Python programming, web development, Artificial Intelligence, Machine Learning, Data Analytics, and more.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#courses" class="bg-teal hover:bg-teal-700 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2"><i data-lucide="book-open" class="w-5 h-5"></i> Explore All Courses</a>
+                        <a href="#professional" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2"><i data-lucide="award" class="w-5 h-5"></i> Professional Programs</a>
+                        <a href="#admissions" class="bg-red hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2"><i data-lucide="message-circle" class="w-5 h-5"></i> Enquire Now</a>
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <img src="https://img-c.udemycdn.com/course/480x270/6532401_ccd3_4.jpg?w=3840&q=75g" alt="Students Learning" class="rounded-2xl shadow-2xl border-4 border-white/20 transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-navy-dark py-10">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div><div class="text-3xl font-bold text-teal">11</div><div class="text-white/80 text-sm mt-1">Certificate Courses</div></div>
+            <div><div class="text-3xl font-bold text-teal">3</div><div class="text-white/80 text-sm mt-1">Diploma Courses</div></div>
+            <div><div class="text-3xl font-bold text-teal">4</div><div class="text-white/80 text-sm mt-1">Professional Programs</div></div>
+            <div><div class="text-3xl font-bold text-teal">18</div><div class="text-white/80 text-sm mt-1">Total Listed Programs</div></div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-navy">Explore Our Course Categories</h2>
+                <p class="text-gray-500 mt-2">Choose the right pathway for your career goals</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border-t-4 border-navy">
+                    <img src="https://aisectlearn.com/wp-content/uploads/2025/04/Certificate-in-Cyber-security-thumbnail-.png" alt="Certificate" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-navy mb-3">Certificate Courses</h3>
+                        <p class="text-gray-500 text-sm mb-6">Short-term courses in programming, web designing, AI, data analytics, and computer applications.</p>
+                        <a href="#courses" onclick="setTimeout(()=>filterCategory('Certificate'),100)" class="text-navy font-semibold text-sm flex items-center gap-2 hover:text-teal transition-colors">Explore Certificate Courses <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border-t-4 border-teal">
+                    <img src="https://nobleuniversity.ac.in/wp-content/uploads/2025/03/Degree-Diploma3.jpg" alt="Diploma" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-navy mb-3">Diploma Courses</h3>
+                        <p class="text-gray-500 text-sm mb-6">Structured diploma programs in computer applications, software, and web technology.</p>
+                        <a href="#courses" onclick="setTimeout(()=>filterCategory('Diploma'),100)" class="text-teal font-semibold text-sm flex items-center gap-2 hover:text-navy transition-colors">Explore Diploma Courses <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border-t-4 border-red">
+                    <img src="https://dbuonline.in/wp-content/uploads/2025/06/bca-is-professional-course-or-not.webp" alt="Professional" class="w-full h-48 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-navy mb-3">Professional Programs</h3>
+                        <p class="text-gray-500 text-sm mb-6">Extended training combining technical skills with professional communication and personality development.</p>
+                        <a href="#professional" class="text-red font-semibold text-sm flex items-center gap-2 hover:text-navy transition-colors">Explore Professional Programs <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Programs Section -->
+    <section id="professional" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-red/10 text-red px-3 py-1 rounded-full text-xs font-semibold mb-3">Flagship Programs</div>
+                <h2 class="text-3xl font-bold text-navy">Featured Professional Programs</h2>
+                <p class="text-gray-500 mt-2">Extended training combining tech skills with professional development</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Pro 1 -->
+                <div class="pro-card rounded-2xl overflow-hidden card-hover relative flex flex-col">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDzBH68UgY2D3QdEfyqUajLkio87DxtTDe7bPQCPfLHu1-Arj6Q77O-OA&s=10" alt="AI ML Full Stack" class="w-full h-56 object-cover">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="absolute top-4 right-4 bg-navy text-white text-xs px-4 py-2 rounded-bl-xl font-semibold z-10">12 Months</div>
+                        <h3 class="text-xl font-bold text-navy mb-4 pr-20">Professional AI, ML & Python Full Stack Developer Program</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">Full Stack</span>
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">AI</span>
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">ML</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 flex-1">Includes 7 proposed certificate components covering tech, AI Digital Marketing, Tech English, and Persona Pro Max.</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-xs text-gray-500 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4"></i> Eligibility: +2 and above</span>
+                        </div>
+                        <button onclick="openModal(14)" class="mt-auto bg-navy hover:bg-navy-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all w-fit">View Program</button>
+                    </div>
+                </div>
+                <!-- Pro 2 -->
+                <div class="pro-card rounded-2xl overflow-hidden card-hover relative flex flex-col">
+                    <img src="https://miro.medium.com/1*qR2nL6kPdv4khvNAYJC3Xw.png" alt="AI Python Full Stack" class="w-full h-56 object-cover">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="absolute top-4 right-4 bg-teal text-white text-xs px-4 py-2 rounded-bl-xl font-semibold z-10">10 Months</div>
+                        <h3 class="text-xl font-bold text-navy mb-4 pr-20">Professional AI Python Full Stack Developer Program</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-teal/10 text-teal px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-teal/10 text-teal px-3 py-1 rounded-full text-xs">Full Stack</span>
+                            <span class="bg-teal/10 text-teal px-3 py-1 rounded-full text-xs">AI</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 flex-1">Includes 6 proposed certificate components covering tech, AI Digital Marketing, Tech English, and Persona Pro Max.</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-xs text-gray-500 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4"></i> Eligibility: +2 and above</span>
+                        </div>
+                        <button onclick="openModal(15)" class="mt-auto bg-teal hover:bg-teal-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all w-fit">View Program</button>
+                    </div>
+                </div>
+                <!-- Pro 3 -->
+                <div class="pro-card rounded-2xl overflow-hidden card-hover relative flex flex-col">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToB5qxxd4xYSBQZ2mOVvBrOMIID0_4Ff-9HWW8OeUQsg&s=10" alt="AI ML" class="w-full h-56 object-cover">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="absolute top-4 right-4 bg-navy text-white text-xs px-4 py-2 rounded-bl-xl font-semibold z-10">8 Months</div>
+                        <h3 class="text-xl font-bold text-navy mb-4 pr-20">Professional AI & Machine Learning Program</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">AI</span>
+                            <span class="bg-navy/10 text-navy px-3 py-1 rounded-full text-xs">ML</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 flex-1">Includes 6 proposed certificate components covering tech, AI Digital Marketing, Tech English, and Persona Pro Max.</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-xs text-gray-500 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4"></i> Eligibility: +2 and above</span>
+                        </div>
+                        <button onclick="openModal(16)" class="mt-auto bg-navy hover:bg-navy-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all w-fit">View Program</button>
+                    </div>
+                </div>
+                <!-- Pro 4 -->
+                <div class="pro-card rounded-2xl overflow-hidden card-hover relative flex flex-col">
+                    <img src="https://freschesolutions.com/wp-content/uploads/2025/12/How-To-Take-Your-Data-Analytics-Approach-To-The-Next-Level-in-2023.jpg" alt="Data Analytics" class="w-full h-56 object-cover">
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="absolute top-4 right-4 bg-red text-white text-xs px-4 py-2 rounded-bl-xl font-semibold z-10">8 Months</div>
+                        <h3 class="text-xl font-bold text-navy mb-4 pr-20">Professional Data Analytics Program</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red/10 text-red px-3 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-red/10 text-red px-3 py-1 rounded-full text-xs">Adv Excel</span>
+                            <span class="bg-red/10 text-red px-3 py-1 rounded-full text-xs">Data Analytics</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6 flex-1">Includes 3 technical certs + AI Digital Marketing, Tech English, and Persona Pro Max.</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-xs text-gray-500 flex items-center gap-1"><i data-lucide="user-check" class="w-4 h-4"></i> Eligibility: +2 and above</span>
+                        </div>
+                        <button onclick="openModal(17)" class="mt-auto bg-red hover:bg-red-600 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all w-fit">View Program</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12"><h2 class="text-3xl font-bold text-navy">Compare Professional Programs</h2></div>
+            <div class="bg-white rounded-2xl shadow-lg overflow-x-auto border border-gray-100">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-navy text-white"><tr><th class="px-6 py-4 font-semibold">Feature</th><th class="px-6 py-4 font-semibold">AI + ML + Full Stack</th><th class="px-6 py-4 font-semibold">AI Python Full Stack</th><th class="px-6 py-4 font-semibold">AI & ML</th><th class="px-6 py-4 font-semibold">Data Analytics</th></tr></thead>
+                    <tbody class="text-gray-800">
+                        <tr class="border-b"><td class="px-6 py-4 font-semibold">Duration</td><td class="px-6 py-4">12 Months</td><td class="px-6 py-4">10 Months</td><td class="px-6 py-4">8 Months</td><td class="px-6 py-4">8 Months</td></tr>
+                        <tr class="border-b bg-gray-50/50"><td class="px-6 py-4 font-semibold">Eligibility</td><td class="px-6 py-4">+2 and above</td><td class="px-6 py-4">+2 and above</td><td class="px-6 py-4">+2 and above</td><td class="px-6 py-4">+2 and above</td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-semibold">Python</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-teal">Yes</td></tr>
+                        <tr class="border-b bg-gray-50/50"><td class="px-6 py-4 font-semibold">Full Stack</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-gray-400">-</td><td class="px-6 py-4 text-gray-400">-</td></tr>
+                        <tr class="border-b"><td class="px-6 py-4 font-semibold">AI & ML</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-teal">AI Only</td><td class="px-6 py-4 text-teal">Yes</td><td class="px-6 py-4 text-gray-400">-</td></tr>
+                        <tr class="border-b bg-gray-50/50"><td class="px-6 py-4 font-semibold">Data Analytics</td><td class="px-6 py-4 text-gray-400">-</td><td class="px-6 py-4 text-gray-400">-</td><td class="px-6 py-4 text-gray-400">-</td><td class="px-6 py-4 text-teal">Yes</td></tr>
+                        <tr><td class="px-6 py-4 font-semibold">Professional Dev.</td><td class="px-6 py-4 text-teal">Included</td><td class="px-6 py-4 text-teal">Included</td><td class="px-6 py-4 text-teal">Included</td><td class="px-6 py-4 text-teal">Included</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Course Finder Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-navy">Student Course Finder</h2>
+                <p class="text-gray-500 mt-2">Find the perfect course based on your qualification and interests</p>
+            </div>
+            
+            <div class="bg-gray-50 rounded-2xl p-6 mb-10 border border-gray-100 shadow-sm">
+                <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="lg:col-span-2 relative">
+                        <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                        <input id="searchInput" type="text" placeholder="Search courses by name or keyword..." class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-navy focus:border-transparent text-sm transition-all">
+                    </div>
+                    <select id="categoryFilter" class="px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-navy text-sm cursor-pointer">
+                        <option value="">All Categories</option><option value="Certificate">Certificate Courses</option><option value="Diploma">Diploma Courses</option><option value="Professional">Professional Programs</option>
+                    </select>
+                    <select id="eligibilityFilter" class="px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-navy text-sm cursor-pointer">
+                        <option value="">All Eligibilities</option><option value="8th">8th Standard and Above</option><option value="10th">SSLC / 10th Pass</option><option value="High School">High School Students</option><option value="+2">Plus Two (+2)</option>
+                    </select>
+                    <select id="durationFilter" class="px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-navy text-sm cursor-pointer">
+                        <option value="">All Durations</option><option value="short">Up to 3 Months</option><option value="medium">4-6 Months</option><option value="long">8-12 Months</option>
+                    </select>
+                </div>
+                <div class="flex justify-between items-center mt-4">
+                    <p id="courseCount" class="text-sm text-gray-500 font-medium">Showing 18 courses</p>
+                    <button id="resetFilters" class="text-sm text-red hover:text-red-600 font-semibold flex items-center gap-1"><i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset Filters</button>
+                </div>
+            </div>
+
+            <div id="courseGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="noCourses" class="hidden text-center py-16">
+                <i data-lucide="search-x" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">No courses found</h3>
+                <p class="text-gray-500 text-sm">Try changing your search or filters.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="about" class="py-20 bg-navy text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16"><h2 class="text-3xl font-bold">Why Choose LBS Skill Centre?</h2></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><i data-lucide="layers" class="w-8 h-8 text-teal mb-4"></i><h4 class="font-semibold mb-2">Multiple Course Options</h4><p class="text-white/70 text-sm">Pathways across different qualification levels.</p></div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><i data-lucide="route" class="w-8 h-8 text-teal mb-4"></i><h4 class="font-semibold mb-2">Structured Pathways</h4><p class="text-white/70 text-sm">Certificate, diploma, and professional training routes.</p></div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><i data-lucide="cpu" class="w-8 h-8 text-teal mb-4"></i><h4 class="font-semibold mb-2">Modern Curriculum</h4><p class="text-white/70 text-sm">Training in AI, ML, Data Analytics, and Web Dev.</p></div>
+                <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><i data-lucide="briefcase" class="w-8 h-8 text-teal mb-4"></i><h4 class="font-semibold mb-2">Internship Components</h4><p class="text-white/70 text-sm">Included in selected professional and certificate courses.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions / Enquiry Form -->
+    <section id="admissions" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-navy">Admission Enquiry</h2>
+                <p class="text-gray-500 mt-2">Fill out the form below to learn more about admissions</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100 relative">
+                <form id="enquiryForm" class="grid md:grid-cols-2 gap-6">
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Full Name <span class="text-red">*</span></label><input type="text" id="enqName" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy focus:border-transparent text-sm"></div>
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Mobile Number <span class="text-red">*</span></label><input type="tel" id="enqMobile" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy focus:border-transparent text-sm"></div>
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Email Address</label><input type="email" id="enqEmail" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy focus:border-transparent text-sm"></div>
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Educational Qualification <span class="text-red">*</span></label><select id="enqQualification" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy text-sm"><option value="">Select Qualification</option><option>8th Standard</option><option>SSLC / 10th</option><option>Plus Two / 12th</option><option>Degree / Higher</option></select></div>
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Course Interested In <span class="text-red">*</span></label><select id="enquiryCourseSelect" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy text-sm"></select></div>
+                    <div><label class="block text-sm font-medium text-gray-800 mb-1">Preferred Contact Method</label><select id="enqContactMethod" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy text-sm"><option>Phone Call</option><option>WhatsApp</option><option>Email</option></select></div>
+                    <div class="md:col-span-2"><label class="block text-sm font-medium text-gray-800 mb-1">Message</label><textarea id="enqMessage" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-navy focus:border-transparent text-sm resize-none" placeholder="Any specific questions or requirements..."></textarea></div>
+                    <div class="md:col-span-2"><button type="submit" class="w-full bg-red hover:bg-red-600 text-white px-6 py-3.5 rounded-full font-semibold transition-all flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> Submit Enquiry via WhatsApp</button></div>
+                </form>
+                <div id="formSuccess" class="hidden text-center py-8">
+                    <i data-lucide="check-circle" class="w-16 h-16 text-teal mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold text-navy mb-2">Redirecting to WhatsApp!</h3>
+                    <p class="text-gray-500 text-sm">If WhatsApp didn't open, please check your popup blocker or <a id="waManualLink" href="#" class="text-teal underline font-semibold">click here</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16"><h2 class="text-3xl font-bold text-navy">Contact Us</h2><p class="text-gray-500 mt-2">Reach out to us for admissions, queries, or collaborations</p></div>
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="space-y-8">
+                    <div class="flex items-start gap-5"><div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="map-marker" class="w-6 h-6 text-navy"></i></div><div><h4 class="font-semibold text-navy mb-1">Our Location</h4><p class="text-gray-500 text-sm leading-relaxed">LBS Skill Centre,<br>Kazhakoottam, Thiruvananthapuram,<br>Kerala, India</p></div></div>
+                    <div class="flex items-start gap-5"><div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="phone" class="w-6 h-6 text-navy"></i></div><div><h4 class="font-semibold text-navy mb-1">Phone Number</h4><p class="text-gray-500 text-sm">+91 471 259 2122 (Office)</p></div></div>
+                    <div class="flex items-start gap-5"><div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="mail" class="w-6 h-6 text-navy"></i></div><div><h4 class="font-semibold text-navy mb-1">Email Address</h4><p class="text-gray-500 text-sm">info@lbskazhakoottam.in</p></div></div>
+                    <div class="flex items-start gap-5"><div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center flex-shrink-0"><i data-lucide="clock" class="w-6 h-6 text-navy"></i></div><div><h4 class="font-semibold text-navy mb-1">Office Hours</h4><p class="text-gray-500 text-sm">Monday - Saturday: 9:00 AM - 5:30 PM</p></div></div>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-96 lg:h-full min-h-[400px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.3914!2d76.951!3d8.514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05b93e6a84eb6d%3A0x6e82e7e2e7e2e7e2!2sKazhakoottam!5e0!3m2!1sen!2sin!4v1678888888888!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+                <div class="lg:col-span-2"><img src="https://z-cdn-media.chatglm.cn/files/c27baa9e-80dd-42b3-bda3-741ec33b0d53.png?auth_key=1883484916-1b413faf049443bebd5f10827d1845f4-0-e7bf9a8784e9fa70d7fa62b5185a0ea4" alt="LBS" class="h-10 mb-4 brightness-0 invert"><p class="text-white/60 text-sm leading-relaxed">LBS Skill Centre, Kazhakoottam – Empowering youth through industry-oriented skill development programs.</p></div>
+                <div><h4 class="font-semibold mb-4">Certificate Courses</h4><div class="space-y-2 text-sm text-white/60"><a href="#courses" class="block hover:text-teal transition-colors">Python</a><a href="#courses" class="block hover:text-teal transition-colors">Expert Web Designing</a><a href="#courses" class="block hover:text-teal transition-colors">Artificial Intelligence</a><a href="#courses" class="block hover:text-teal transition-colors">Advanced Excel</a><a href="#courses" class="block hover:text-teal transition-colors">Data Analytics</a></div></div>
+                <div><h4 class="font-semibold mb-4">Diploma & Professional</h4><div class="space-y-2 text-sm text-white/60"><a href="#courses" class="block hover:text-teal transition-colors">DCA / DCA(S) / DWT</a><a href="#professional" class="block hover:text-teal transition-colors">AI + ML + Full Stack</a><a href="#professional" class="block hover:text-teal transition-colors">AI Python Full Stack</a><a href="#professional" class="block hover:text-teal transition-colors">AI & ML Program</a></div></div>
+                <div><h4 class="font-semibold mb-4">Contact Info</h4><div class="space-y-2 text-sm text-white/60"><p>Kazhakoottam, Trivandrum</p><p>+91 471 259 2122</p><p>info@lbskazhakoottam.in</p><a href="#contact" class="block mt-2 text-teal hover:text-white transition-colors font-medium">Contact Us →</a></div></div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm"><p>&copy; 2024 LBS Skill Centre. All rights reserved.</p><div class="flex gap-4"><a href="#" class="hover:text-white transition-colors">Privacy Policy</a><a href="#" class="hover:text-white transition-colors">Terms of Use</a></div></div>
+        </div>
+    </footer>
+
+    <!-- Course Detail Modal -->
+    <div id="courseModal" class="modal-overlay fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+        <div class="modal-content bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors z-10"><i data-lucide="x" class="w-5 h-5 text-gray-800"></i></button>
+            <div id="modalBody" class="p-8"></div>
+        </div>
+    </div>
+
+    <script>
+        // Course Data with Images
+        const courses = [
+            { id: 0, name: "Certificate Course in Python", cat: "Certificate", dur: "3 Months", durSort: 3, elig: "SSLC", eligVal: "10th", desc: "A beginner-friendly programming course designed to introduce students to Python programming and foundational coding concepts.", internship: "", img: "https://abctrainings.in/media/thumbnails/Python-01_2_1.png" },
+            { id: 1, name: "Expert Web Designing", cat: "Certificate", dur: "3 Months", durSort: 3, elig: "SSLC", eligVal: "10th", desc: "A web designing course intended to introduce learners to website design and frontend development concepts.", internship: "", img: "https://www.simplilearn.com/ice9/free_resources_article_thumb/is_web_development_good_career.jpg" },
+            { id: 2, name: "Junior Programmer", cat: "Certificate", dur: "2 Months", durSort: 2, elig: "8th Standard and Above", eligVal: "8th", desc: "A short-term programming course intended for learners who want to begin developing basic programming skills.", internship: "", img: "https://codingtutorjunior.com/images/site/home-gallery-boy-coding.webp" },
+            { id: 3, name: "Certificate Course in Artificial Intelligence", cat: "Certificate", dur: "3 Months", durSort: 3, elig: "+2 and Above", eligVal: "+2", desc: "An introductory Artificial Intelligence program for learners interested in understanding AI concepts and applications.", internship: "", img: "https://cdn.nishtyainfotech.com/content/learnings/data/blog/banner/69a6bd93572ac8.59468835.webp" },
+            { id: 4, name: "Web Designing Using HTML & CSS", cat: "Certificate", dur: "2 Months", durSort: 2, elig: "High School Students", eligVal: "High School", desc: "A short-term course focused on learning the fundamentals of web page creation using HTML and CSS.", internship: "", img: "https://images.tynker.com/blog/wp-content/uploads/20230608134157/Untitled-design-1.png" },
+            { id: 5, name: "Advanced Excel", cat: "Certificate", dur: "2 Months", durSort: 2, elig: "SSLC", eligVal: "10th", desc: "A spreadsheet skills course intended to help learners develop advanced Excel-based data organization and reporting skills.", internship: "", img: "https://codeit.com.np/storage/course-featured/01KN8V5DEHD8FG7ESC51B8THST.webp" },
+            { id: 6, name: "Data Science with Machine Learning", cat: "Certificate", dur: "5 Months + 1-Month Internship", durSort: 6, elig: "+2", eligVal: "+2", desc: "A data science and machine learning training program with a six-month overall pathway, including a five-month training period and a one-month internship component.", internship: "1 Month", img: "https://www.udacity.com/blog/wp-content/uploads/2021/03/Data-Science-and-ML-Careers_Blog.jpeg" },
+            { id: 7, name: "Full Stack Development", cat: "Certificate", dur: "5 Months + 1-Month Internship", durSort: 6, elig: "+2", eligVal: "+2", desc: "A full stack development training program with a five-month training period and a one-month internship component.", internship: "1 Month", img: "https://learntoearnlabs.com/wp-content/uploads/2025/10/Java-Full-Stack-Developer-Tools-and-Frameworks-2025-1024x536.webp" },
+            { id: 8, name: "Machine Learning Using Python", cat: "Certificate", dur: "3 Months", durSort: 3, elig: "+2 and Above", eligVal: "+2", desc: "A machine learning course designed for learners interested in understanding machine learning concepts using Python.", internship: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxF8TQ_P8e4ab5Kn7yeXPIcroKLQgQcpBzxUJ74z8UJuUhR72h_Fvn4aKJ&s=10" },
+            { id: 9, name: "Data Analytics", cat: "Certificate", dur: "3 Months + 2-Month Internship", durSort: 5, elig: "+2 and Above", eligVal: "+2", desc: "A data analytics training program with a three-month training period and a two-month internship component.", internship: "2 Months", img: "https://blog.herzing.ca/hubfs/data%20analytics.jpg" },
+            { id: 10, name: "Certificate Course in C Programming", cat: "Certificate", dur: "50 Hours", durSort: 1, elig: "+2", eligVal: "+2", desc: "A short-term programming course providing an introduction to C programming and foundational computer programming concepts.", internship: "", img: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Cimage.jpg?utm_source=en.wikiversity.org&utm_campaign=index&utm_content=original" },
+            { id: 11, name: "Diploma in Computer Applications (DCA)", cat: "Diploma", dur: "1 Year", durSort: 12, elig: "10th Pass", eligVal: "10th", desc: "A diploma program designed to introduce learners to computer applications and foundational computer skills.", internship: "", img: "https://images.shiksha.com/mediadata/images/articles/1752814446phpf4QJnm.jpeg" },
+            { id: 12, name: "Diploma in Computer Applications (Software)", cat: "Diploma", dur: "6 Months", durSort: 6, elig: "12th and Above", eligVal: "+2", desc: "A software-oriented diploma program in computer applications for students who have completed Plus Two or higher qualifications.", internship: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgVyAi-fuDTvOV3xYKzlfjCqxbmlCa_hvcTtoAryB1YX7hFCK8Cb_-xoA&s=10" },
+            { id: 13, name: "Diploma in Web Technology (DWT)", cat: "Diploma", dur: "6 Months", durSort: 6, elig: "+2 and Above", eligVal: "+2", desc: "A diploma program focused on web technology and website development.", internship: "", img: "https://media.licdn.com/dms/image/v2/D5612AQG5Q4_R4UezJQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1701969411132?e=2147483647&v=beta&t=Swdi0NxKANtpPd-db_kWP9mniYOk2Dn46J9y2Ai_I24" },
+            { id: 14, name: "Professional AI, ML & Python Full Stack Developer", cat: "Professional", dur: "12 Months", durSort: 12, elig: "+2 and Above", eligVal: "+2", desc: "A 12-month professional training program combining Python programming, Python full stack development, Artificial Intelligence, Machine Learning, and professional development components.", internship: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDzBH68UgY2D3QdEfyqUajLkio87DxtTDe7bPQCPfLHu1-Arj6Q77O-OA&s=10" },
+            { id: 15, name: "Professional AI Python Full Stack Developer", cat: "Professional", dur: "10 Months", durSort: 10, elig: "+2 and Above", eligVal: "+2", desc: "A 10-month professional training program focused on Python programming, Python full stack development, Artificial Intelligence, and professional development.", internship: "", img: "https://miro.medium.com/1*qR2nL6kPdv4khvNAYJC3Xw.png" },
+            { id: 16, name: "Professional AI & Machine Learning", cat: "Professional", dur: "8 Months", durSort: 8, elig: "+2 and Above", eligVal: "+2", desc: "An 8-month professional training program focused on Artificial Intelligence, Machine Learning, Python programming, and professional development.", internship: "", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToB5qxxd4xYSBQZ2mOVvBrOMIID0_4Ff-9HWW8OeUQsg&s=10" },
+            { id: 17, name: "Professional Data Analytics", cat: "Professional", dur: "8 Months", durSort: 8, elig: "+2 and Above", eligVal: "+2", desc: "An 8-month professional program combining Python programming, Advanced Excel, Data Analytics, AI Digital Marketing, professional English communication, and personality development.", internship: "", img: "https://freschesolutions.com/wp-content/uploads/2025/12/How-To-Take-Your-Data-Analytics-Approach-To-The-Next-Level-in-2023.jpg" }
+        ];
+
+        const courseGrid = document.getElementById('courseGrid');
+        const courseCount = document.getElementById('courseCount');
+        const noCourses = document.getElementById('noCourses');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const eligibilityFilter = document.getElementById('eligibilityFilter');
+        const durationFilter = document.getElementById('durationFilter');
+        const enquiryCourseSelect = document.getElementById('enquiryCourseSelect');
+
+        courses.forEach(c => { const opt = document.createElement('option'); opt.value = c.name; opt.textContent = c.name; enquiryCourseSelect.appendChild(opt); });
+
+        function renderCourses(filteredCourses) {
+            courseGrid.innerHTML = '';
+            if (filteredCourses.length === 0) {
+                noCourses.classList.remove('hidden');
+                courseCount.textContent = `Showing 0 courses`;
+            } else {
+                noCourses.classList.add('hidden');
+                courseCount.textContent = `Showing ${filteredCourses.length} course${filteredCourses.length > 1 ? 's' : ''}`;
+                filteredCourses.forEach(course => {
+                    const catColor = course.cat === 'Certificate' ? 'bg-navy' : course.cat === 'Diploma' ? 'bg-teal' : 'bg-red';
+                    const catTextColor = course.cat === 'Certificate' ? 'text-navy' : course.cat === 'Diploma' ? 'text-teal' : 'text-red';
+                    const catBgColor = course.cat === 'Certificate' ? 'bg-navy/10' : course.cat === 'Diploma' ? 'bg-teal/10' : 'bg-red/10';
+                    
+                    courseGrid.innerHTML += `
+                        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden card-hover flex flex-col group">
+                            <div class="relative h-48 overflow-hidden">
+                                <img src="${course.img}" alt="${course.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <div class="absolute top-3 left-3 ${catBgColor} ${catTextColor} text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">${course.cat}</div>
+                                ${course.internship ? `<div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm"><i data-lucide="briefcase" class="w-3 h-3"></i> Internship</div>` : ''}
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <h3 class="font-bold text-gray-800 text-lg mb-3 leading-tight flex-1">${course.name}</h3>
+                                <div class="space-y-2 mb-5">
+                                    <div class="flex items-center gap-2 text-sm text-gray-800"><i data-lucide="clock" class="w-4 h-4 text-gray-500"></i> ${course.dur}</div>
+                                    <div class="flex items-center gap-2 text-sm text-gray-800"><i data-lucide="user-check" class="w-4 h-4 text-gray-500"></i> ${course.elig}</div>
+                                </div>
+                                <div class="flex gap-3 mt-auto">
+                                    <button onclick="openModal(${course.id})" class="flex-1 bg-navy hover:bg-navy-dark text-white text-center py-2.5 rounded-lg text-sm font-semibold transition-all">View Details</button>
+                                    <a href="#admissions" onclick="document.getElementById('enquiryCourseSelect').value='${course.name}'" class="flex-1 border-2 border-navy text-navy hover:bg-navy hover:text-white text-center py-2.5 rounded-lg text-sm font-semibold transition-all">Enquire</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            lucide.createIcons();
+        }
+
+        function filterCategory(cat) { categoryFilter.value = cat; applyFilters(); }
+        
+        function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
+            const eligibility = eligibilityFilter.value;
+            const duration = durationFilter.value;
+
+            const filtered = courses.filter(c => {
+                const matchSearch = c.name.toLowerCase().includes(searchTerm) || c.desc.toLowerCase().includes(searchTerm);
+                const matchCat = category === "" || c.cat === category;
+                const matchElig = eligibility === "" || c.eligVal === eligibility;
+                let matchDur = true;
+                if (duration === 'short') matchDur = c.durSort <= 3;
+                if (duration === 'medium') matchDur = c.durSort > 3 && c.durSort <= 6;
+                if (duration === 'long') matchDur = c.durSort >= 8;
+                return matchSearch && matchCat && matchElig && matchDur;
+            });
+            renderCourses(filtered);
+        }
+
+        searchInput.addEventListener('input', applyFilters);
+        categoryFilter.addEventListener('change', applyFilters);
+        eligibilityFilter.addEventListener('change', applyFilters);
+        durationFilter.addEventListener('change', applyFilters);
+        document.getElementById('resetFilters').addEventListener('click', () => { searchInput.value = ''; categoryFilter.value = ''; eligibilityFilter.value = ''; durationFilter.value = ''; applyFilters(); });
+
+        function openModal(id) {
+            const course = courses.find(c => c.id === id);
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="relative h-64 -m-8 mb-6 rounded-t-2xl overflow-hidden">
+                    <img src="${course.img}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-navy/70 flex flex-col justify-end p-8 text-white">
+                        <span class="bg-white/20 text-xs font-semibold px-3 py-1 rounded-full w-fit mb-3">${course.cat} Course</span>
+                        <h2 class="text-2xl font-bold">${course.name}</h2>
+                    </div>
+                </div>
+                <div class="space-y-6 px-2">
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-xl text-center"><i data-lucide="clock" class="w-6 h-6 text-navy mx-auto mb-2"></i><h4 class="font-bold text-sm text-navy">Duration</h4><p class="text-gray-500 text-xs">${course.dur}</p></div>
+                        <div class="bg-gray-50 p-4 rounded-xl text-center"><i data-lucide="user-check" class="w-6 h-6 text-navy mx-auto mb-2"></i><h4 class="font-bold text-sm text-navy">Eligibility</h4><p class="text-gray-500 text-xs">${course.elig}</p></div>
+                        <div class="bg-gray-50 p-4 rounded-xl text-center"><i data-lucide="briefcase" class="w-6 h-6 text-navy mx-auto mb-2"></i><h4 class="font-bold text-sm text-navy">Internship</h4><p class="text-gray-500 text-xs">${course.internship || 'Not Included'}</p></div>
+                    </div>
+                    <div><h3 class="text-xl font-bold text-navy mb-2">About the Course</h3><p class="text-gray-500 leading-relaxed text-sm">${course.desc}</p></div>
+                    <div class="text-center pt-4"><a href="#admissions" onclick="document.getElementById('enquiryCourseSelect').value='${course.name}'; closeModal();" class="bg-red hover:bg-red-600 text-white px-8 py-3 rounded-full font-semibold transition-all inline-flex items-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i> Enquire About This Course</a></div>
+                </div>
+            `;
+            document.getElementById('courseModal').classList.add('active');
+            lucide.createIcons();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('courseModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('courseModal').addEventListener('click', (e) => { if (e.target === document.getElementById('courseModal')) closeModal(); });
+
+        // Mobile Menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => { document.getElementById('mobileMenu').classList.remove('translate-x-full'); document.getElementById('menuOverlay').classList.remove('hidden'); });
+        document.getElementById('mobileMenuClose').addEventListener('click', () => { document.getElementById('mobileMenu').classList.add('translate-x-full'); document.getElementById('menuOverlay').classList.add('hidden'); });
+        document.getElementById('menuOverlay').addEventListener('click', () => { document.getElementById('mobileMenu').classList.add('translate-x-full'); document.getElementById('menuOverlay').classList.add('hidden'); });
+
+        // FAQ
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('[data-lucide="chevron-down"]');
+                content.classList.toggle('open');
+                icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+            });
+        });
+
+        // ✅ FIXED WHATSAPP FORM LOGIC
+        document.getElementById('enquiryForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 1. Get values directly by ID
+            const name = document.getElementById('enqName').value;
+            const mobile = document.getElementById('enqMobile').value;
+            const email = document.getElementById('enqEmail').value;
+            const qualification = document.getElementById('enqQualification').value;
+            const course = document.getElementById('enquiryCourseSelect').value;
+            const contactMethod = document.getElementById('enqContactMethod').value;
+            const message = document.getElementById('enqMessage').value;
+
+            // 2. ⚠️ IMPORTANT: REPLACE THIS WITH YOUR ACTUAL WHATSAPP NUMBER (Include country code, no + sign)
+            // Example for India: 919876543210
+            const yourWhatsAppNumber = '919048218316'; 
+
+            // 3. Construct the WhatsApp message text
+            let text = `*New Admission Enquiry from Website*%0A%0A`; 
+            text += `*Name:* ${name}%0A`;
+            text += `*Mobile:* ${mobile}%0A`;
+            text += `*Email:* ${email || 'Not provided'}%0A`;
+            text += `*Qualification:* ${qualification}%0A`;
+            text += `*Course:* ${course}%0A`;
+            text += `*Preferred Contact:* ${contactMethod}%0A`;
+            text += `*Message:* ${message || 'No message'}`;
+
+            // 4. Build the WhatsApp URL
+            const waURL = `https://wa.me/${yourWhatsAppNumber}?text=${text}`;
+
+            // 5. Open WhatsApp in a new tab
+            window.open(waURL, '_blank');
+
+            // 6. Show success message and provide manual link just in case
+            document.getElementById('enquiryForm').classList.add('hidden');
+            document.getElementById('formSuccess').classList.remove('hidden');
+            document.getElementById('waManualLink').href = waURL;
+        });
+
+        // Init
+        renderCourses(courses);
+        lucide.createIcons();
+    </script>
+</body>
+</html>
